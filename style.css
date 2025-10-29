@@ -12,7 +12,112 @@ html {
 
 
 body{
+  font-family: "Inter", sans-serif;
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px 0;
+}
+
+header{
+  position: relative;
+}
+
+header .header-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 208px;
+  color: whitesmoke;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./images/andre-tan-image-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-content h1{
+  margin: 0;
+  text-shadow: 1px 1px 1px black;
+}
+
+.header-content a{
+  font-weight: 500;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px black;
+}
+
+.form-container{
+  position: absolute;
+  bottom: -8.5%;
+  left: auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+header .form{
+  display: flex;
+  align-items: center;
+  border: 1px solid #D1D5DB;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.051);
+  width: 100%;
+  min-width:  348.3px;
+  max-width: 462px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.form a{
+  display: inline-block;
+  margin: 0 8px 0 14px;
+}
+
+.form img{
+  display: block;
+  width: 16px;
+}
+
+.form input[type="text"]{
+  width: 100%;
+  padding: 9px 0;
+  border: none;
+  outline: none;
+}
+
+.form button{
+  background-color: #F9FAFB;
+  border: none;
+  border-left: 1px solid #D1D5DB;
+  cursor: pointer;
+  padding: 9px 30px;
+}
+
+main{
+  padding-top: 50px;
+}
+
+
+/* Small Devices (Landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  /* Styles for small devices and up */
+}
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* Styles for tablets and up */
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* Styles for desktops and up */
+}
+
+/* Extra Large Devices (Large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for large desktops and up */
+}
+
+/* Extra Extra Large Devices (Larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  /* Styles for extra large desktops and up */
 }

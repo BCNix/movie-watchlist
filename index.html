@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet">
+    <!-- Google Font Start-->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+     <link href="./style.css" rel="stylesheet">
     <title>Movie Watchlist</title>
 </head>
 <body>
@@ -13,11 +18,13 @@
             <a href="./watchlist.html">My Watchlist</a>
         </div>
 
-        <form name="search-form" action="">
-            <a href="#search-field"><img src="./images/search-icon.png" alt="A magnifying glass representing to search."></a>
-            <input type="text" aria-label="The search field." id="search-field" placeholder="Search for a movie" name="search-field">
-            <button type="submit">Search</button>
-        </form>
+        <div class="form-container">
+            <form name="search-form" action="" class="form">
+                <a href="#search-field"><img src="./images/search-icon.png" alt="A magnifying glass representing to search."></a>
+                <input type="text" aria-label="The search field." id="search-field" placeholder="Search for a movie" name="search-field">
+                <button type="submit" class="form-item">Search</button>
+            </form>
+        </div>
     </header>
 
     <main>
