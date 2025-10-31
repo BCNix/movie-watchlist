@@ -22,6 +22,8 @@ body{
   color: #353935;
 }
 
+/* Header Section */
+
 header{
   position: relative;
 }
@@ -97,6 +99,8 @@ header .form{
   padding: 9px 30px;
 }
 
+/* Main Section */
+
 main{
   height: 100%;
 }
@@ -106,7 +110,7 @@ main .buffer{
   height: 17px;
 }
 
-main .explore-container,
+.explore-container,
 .watchlist-container {
   display: flex;
   flex-direction: column;
@@ -132,7 +136,7 @@ main .explore-container,
   text-align: center;
 }
 
-/* Watchlist Page*/
+/* Watchlist HTML Page*/
 
 .watchlist-container p{
   max-width: 400px;
@@ -161,20 +165,137 @@ main .explore-container,
   display: none;
 }
 
+/* Movies Container */
 
+.movies-containter{
+  padding-top: 24px;
+  overflow: scroll;
+  height: 95%;
+  
+}
+
+.movie-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 20px 8px 20.5px;
+  padding-bottom: 20.5px;
+  border-bottom: 1.5px solid #E5E7EB;
+}
+
+.movie-descriptions{
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.movie-poster{
+  max-width: 99px;
+  max-height: 147.5px;
+}
+
+.rating-content{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.movie-descriptions li:nth-child(1){
+  display: flex;
+  align-items: center;
+  color: #111827;
+  gap: 8px;
+}
+
+.movie-details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 11px;
+  max-width: 281px;
+  font-size: 45px;
+}
+
+.star-icon,
+.add-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.movie-item h2{
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.add-to-container{
+  display: flex;
+  gap: 5px;
+}
+
+.ratings,
+.movie-details {
+  font-size: 0.75rem;
+}
+
+.movie-summary{
+  max-width: 342px;
+}
+
+.movie-summary p{
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+/* Read more */
+
+.summary-text.collapsed {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.read-more-btn{
+  color: #272727;
+  font-size: 12px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  top: -1.2em;
+  padding: 0;
+}
+
+/* Footer Section */
 
 footer{
   align-self: center;
   padding: 10px 0;
 }
 
-
 /* Small Devices (Landscape phones, 576px and up) */
 @media (min-width: 576px) {
   /* Styles for small devices and up */
   header .header-content{
-  gap: 50px;
-}
+    gap: 50px;
+  }
+
+  /* .movie-descriptions li:nth-child(1){
+    gap: 8px;
+  } */
+
+  .movie-item h2{
+  }
 }
 
 /* Medium Devices (Tablets, 768px and up) */
