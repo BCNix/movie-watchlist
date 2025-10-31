@@ -177,7 +177,7 @@ main .buffer{
 .movie-item{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: self-start;
   gap: 1rem;
   max-width: 470px;
   margin: 0 auto;
@@ -188,6 +188,7 @@ main .buffer{
 
 .movie-descriptions{
   margin: 0;
+  padding-top: 15px;
   padding-left: 0;
   list-style: none;
 }
@@ -233,9 +234,13 @@ main .buffer{
   text-wrap: balance;
 }
 
-.add-to-container{
+.add-to-wishlist-btn{
   display: flex;
   gap: 5px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 0;
 }
 
 .ratings,
