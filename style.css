@@ -213,11 +213,11 @@ main .buffer{
 
 .movie-details{
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin-top: 11px;
-  max-width: 281px;
   font-size: 45px;
+  gap: 19px;
 }
 
 .star-icon,

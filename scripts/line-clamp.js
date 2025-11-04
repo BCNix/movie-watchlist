@@ -27,13 +27,10 @@ function truncateLine(){
             summary.classList.add('collapsed')
             const readMoreBtn = document.createElement('button')
             readMoreBtn.textContent = '...Read more'
-            readMoreBtn.setAttribute('data-readBtn', `btn-${index}`)
+            readMoreBtn.setAttribute('data-readbtn', `btn-${index}`)
             readMoreBtn.id = `btn-${index}`
             readMoreBtn.classList.add('read-more-btn')
             summary.after(readMoreBtn)
         }
     })
 }
-
-
-truncateLine()

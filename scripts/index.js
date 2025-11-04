@@ -8,55 +8,75 @@ const exploreContainer = document.getElementById('explore-container')
 const startExploring = document.getElementById('start-exploring')
 const unableToFind = document.getElementById('unable-to-find')
 
-const imdbIds = []
+const watchList = new Set()
 
-async function fetchMovie(endPoint, title){
+async function fetchMovie(endPoint, lookFor){
     try{
-        const res = await fetch(BASE_URL + endPoint + title + API_KEY)
-        const data = await res.json()
-        return data
+        const res = await fetch(BASE_URL + endPoint + lookFor + API_KEY)
+        return await res.json()
     } catch (error){
         console.error(error.message)
     }
 }
 
-function renderSearchedMovies(arr){
+async function renderSearchedMovies(arr){
 
-    
     exploreContainer.classList.add('hidden')
-    const moviesContainer = document.getElementById('movies-containter')
 
-    let movieItems = ''
+    const moviesContainer = document.getElementById('movie')
 
-    arr.forEach((items) => {
-        movieItems += `<div class="movie-item">
-                            <img class="movie-poster" src="./images/image 33.png" alt="Movie poster">
-                            <ul class="movie-descriptions">
-                                <li>
-                                    <h2>Blade Runner Black Out 2022</h2>
-                                    <div class="rating-content">
-                                        <img class="star-icon" src="./images/star-icon.svg" alt="A star icon for movie ratings">
-                                        <span class="ratings">8.1</span>
-                                    </div>
-                                </li>
-                                <li class="movie-details">
-                                    <span id="duration" class="duration">117 min</span>
-                                    <span id="genre" class="genre">Action, Drama, Sci-fi</span>
-                                    <button class="add-to-wishlist-btn">
-                                        <img class="add-icon" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
-                                        Watchlist
-                                    </button>
-                                </li>
-                                <li class="movie-summary">
-                                    <p class="summary-text">Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing. Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing.</p>
-                                </li>
-                            </ul>
-                        </div>`
-    })
+    moviesContainer.classList.remove('hidden')
+
+    const movies = await Promise.all( arr.map( imdbID => fetchMovie(IMDB_END_POINT, imdbID)) )
+
+    const movieItems = movies.map( (movie, index) =>
+            `<div class="movie-item">
+                <img class="movie-poster" src="${movie.Poster}" alt="Movie poster">
+                <ul class="movie-descriptions">
+                    <li>
+                        <h2>${movie.Title}</h2>
+                        <div class="rating-content">
+                            <img class="star-icon" src="./images/star-icon.svg" alt="A star icon for movie ratings">
+                            <span class="ratings">${movie.imdbRating}</span>
+                        </div>
+                    </li>
+                    <li class="movie-details">
+                        <span id="duration" class="duration">${movie.Runtime}</span>
+                        <span id="genre" class="genre">${movie.Genre}</span>
+                        <button id="add-btn-${index}" data-addBtn="add-${movie.imdbID}" class="add-to-wishlist-btn">
+                            <img class="add-icon" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
+                            Watchlist
+                        </button>
+                    </li>
+                    <li class="movie-summary">
+                        <p class="summary-text">${movie.Plot}</p>
+                    </li>
+                </ul>
+            </div>`
+        ).join('')
+
+    moviesContainer.innerHTML = movieItems
+
+    truncateLine()
 }
 
+document.body.addEventListener('click', (e) => {
+    console.log(e)
+    if(e.target.dataset.addbtn){
 
-formEl.addEventListener('submit', async e => {
+        watchList.add(e.target.dataset.addbtn.slice(4))
+
+        const dataList = JSON.stringify(Array.from(watchList))
+
+        localStorage.setItem('watchlist', dataList)
+        
+        // console.log(watchList)
+    }
+    // const addBtn = document.getElementById('')
+})
+
+
+formEl.addEventListener('submit', async (e) => {
     e.preventDefault()
 
     const searchField = document.getElementById('search-field')
@@ -68,9 +88,10 @@ formEl.addEventListener('submit', async e => {
     const fetchSearchData = await fetchMovie(SEARCH_END_POINT, movieTitle)
 
     if(fetchSearchData.Response === 'True'){
-        console.log(fetchSearchData)
-        fetchSearchData.Search.forEach(item => imdbIds.push(item.imdbID))
-        console.log(fetchSearchData.Search)
+        // console.log(fetchSearchData)
+        const imdbIds = fetchSearchData.Search.map(item => item.imdbID)
+        console.log(imdbIds)
+        renderSearchedMovies(imdbIds)
     } else{
         exploreContainer.classList.remove('hidden')
         startExploring.classList.add('hidden')
@@ -79,9 +100,8 @@ formEl.addEventListener('submit', async e => {
         searchField.value = ''
         console.log(fetchSearchData.Error)
     }
-
-    console.log(imdbIds)
-
 })
+
+
 
 
