@@ -221,7 +221,8 @@ main .buffer{
 }
 
 .star-icon,
-.add-icon {
+.add-icon,
+.remove-icon {
   display: block;
   width: 16px;
   height: 16px;
@@ -234,7 +235,8 @@ main .buffer{
   text-wrap: balance;
 }
 
-.add-to-wishlist-btn{
+.add-to-wishlist-btn,
+.remove-from-wishlist-btn {
   display: flex;
   gap: 5px;
   border: none;

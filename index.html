@@ -19,7 +19,7 @@
         </div>
 
         <div class="form-container">
-            <form name="search-form" action="" class="form">
+            <form name="search-form" action="" class="form" id="form">
                 <a href="#search-field"><img src="./images/search-icon.png" alt="A magnifying glass representing to search."></a>
                 <input type="text" aria-label="The search field." id="search-field" placeholder="Search for a movie" name="search-field">
                 <button type="submit" class="form-item">Search</button>
@@ -29,15 +29,15 @@
 
     <main>
         <div class="buffer"></div>
-        <div class="explore-container hidden">
-            <div class="">
+        <div id="explore-container" class="explore-container hidden">
+            <div id="start-exploring" class="">
                 <img src="./images/explore-icon.png" alt="An image of a single film.">
                 <p class="style-content">Start exploring</p>
             </div>
-            <p class="style-content hidden">Unable to find what you're looking for. Please try another search.</p>
+            <p id="unable-to-find" class="style-content hidden">Unable to find what you're looking for. Please try another search.</p>
         </div>
-        <div id="movie" class="movies-containter">
-            <div class="movie-item">
+        <div id="movie" class="movies-containter hidden">
+            <!-- <div class="movie-item">
                 <img class="movie-poster" src="./images/image 33.png" alt="Movie poster">
                 <ul class="movie-descriptions">
                     <li>
@@ -59,55 +59,7 @@
                         <p class="summary-text">Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing. Young Blade Runner K's discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, who's been missing.</p>
                     </li>
                 </ul>
-            </div>
-
-            <div class="movie-item">
-                <img class="movie-poster" src="./images/image 33.png" alt="Movie poster">
-                <ul class="movie-descriptions">
-                    <li>
-                        <h2>Blade Runner Black Out 2022</h2>
-                        <div class="rating-content">
-                            <img class="star-icon" src="./images/star-icon.svg" alt="A star icon for movie ratings">
-                            <span class="ratings">8.1</span>
-                        </div>
-                    </li>
-                    <li class="movie-details">
-                        <span id="duration" class="duration">117 min</span>
-                        <span id="genre" class="genre">Action, Drama, Sci-fi</span>
-                        <button class="add-to-wishlist-btn">
-                            <img class="add-icon" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
-                            Watchlist
-                        </button>
-                    </li>
-                    <li class="movie-summary">
-                        <p class="summary-text">Young Blade Runner K's discovery of a long-buried secret leads him to track.</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="movie-item">
-                <img class="movie-poster" src="./images/image 33.png" alt="Movie poster">
-                <ul class="movie-descriptions">
-                    <li>
-                        <h2>Blade Runner Black Out 2022</h2>
-                        <div class="rating-content">
-                            <img class="star-icon" src="./images/star-icon.svg" alt="A star icon for movie ratings">
-                            <span class="ratings">8.1</span>
-                        </div>
-                    </li>
-                    <li class="movie-details">
-                        <span id="duration" class="duration">117 min</span>
-                        <span id="genre" class="genre">Action, Drama, Sci-fi</span>
-                        <button class="add-to-wishlist-btn">
-                            <img class="add-icon" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
-                            Watchlist
-                        </button>
-                    </li>
-                    <li class="movie-summary">
-                        <p class="summary-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at semper nisl, at tempor ipsum. Phasellus ultrices leo massa, id pellentesque erat tempus a. Phasellus at maximus est. Sed eu molestie elit, id vehicula neque. Nunc ornare velit sit amet dapibus ornare. Praesent dictum justo felis, at aliquam arcu fringilla ac. Proin consectetur dignissim odio, non sodales metus cursus eu. Vivamus sodales, sem at fringilla porta, nisi ipsum imperdiet enim, nec eleifend libero augue et risus. Ut vel commodo odio. Vestibulum ut metus nec diam elementum lobortis in non velit. Nulla dignissim blandit enim, posuere dictum massa ullamcorper quis. Quisque rutrum gravida augue feugiat convallis. Etiam eleifend mauris a urna tristique, et sollicitudin velit vehicula. Aliquam erat volutpat. Nulla facilisi.</p>
-                    </li>
-                </ul>
-            </div>
+            </div> -->
         </div>
     </main>
 
