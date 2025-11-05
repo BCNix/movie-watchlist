@@ -1,23 +1,9 @@
-const BASE_URL = 'http://www.omdbapi.com/'
-const SEARCH_END_POINT = '?s='
-const IMDB_END_POINT = '?i='
-const API_KEY = '&apikey=e1b8f91d'
-
 const formEl = document.getElementById('form')
 const exploreContainer = document.getElementById('explore-container')
 const startExploring = document.getElementById('start-exploring')
 const unableToFind = document.getElementById('unable-to-find')
 
-const watchList = new Set()
-
-async function fetchMovie(endPoint, lookFor){
-    try{
-        const res = await fetch(BASE_URL + endPoint + lookFor + API_KEY)
-        return await res.json()
-    } catch (error){
-        console.error(error.message)
-    }
-}
+const watchList = new Set(JSON.parse(localStorage.getItem('watchlist') || '[]'))
 
 async function renderSearchedMovies(arr){
 
@@ -44,7 +30,7 @@ async function renderSearchedMovies(arr){
                         <span id="duration" class="duration">${movie.Runtime}</span>
                         <span id="genre" class="genre">${movie.Genre}</span>
                         <button id="add-btn-${index}" data-addBtn="add-${movie.imdbID}" class="add-to-wishlist-btn">
-                            <img class="add-icon" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
+                            <img class="add-icon" data-addBtn="add-${movie.imdbID}" src="./images/add-icon.png" alt="A plus sign to add this movie to your watchlist">
                             Watchlist
                         </button>
                     </li>
@@ -63,18 +49,11 @@ async function renderSearchedMovies(arr){
 document.body.addEventListener('click', (e) => {
     console.log(e)
     if(e.target.dataset.addbtn){
-
         watchList.add(e.target.dataset.addbtn.slice(4))
-
         const dataList = JSON.stringify(Array.from(watchList))
-
         localStorage.setItem('watchlist', dataList)
-        
-        // console.log(watchList)
     }
-    // const addBtn = document.getElementById('')
 })
-
 
 formEl.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -101,7 +80,3 @@ formEl.addEventListener('submit', async (e) => {
         console.log(fetchSearchData.Error)
     }
 })
-
-
-
-
