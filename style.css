@@ -167,7 +167,7 @@ main .buffer{
 
 /* Movies Container */
 
-.movies-container{
+.movies-container {
   padding-top: 24px;
   overflow: scroll;
   height: 95%;

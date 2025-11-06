@@ -5,7 +5,7 @@ async function renderWatchlistMovies(arr){
     const exploreWatchList = document.getElementById('watchlist-container')
     const watchlistContainer = document.getElementById('watchlist-movie')
 
-    if(arr){       
+    if(arr.length > 0){       
         exploreWatchList.classList.add('hidden') 
         watchlistContainer.classList.remove('hidden')
         const movies = await Promise.all(arr.map( imdbID => fetchMovie(IMDB_END_POINT, imdbID) ))
@@ -23,8 +23,8 @@ async function renderWatchlistMovies(arr){
                         <li class="movie-details">
                             <span id="duration" class="duration">${movie.Runtime}</span>
                             <span id="genre" class="genre">${movie.Genre}</span>
-                            <button id="remove-btn-${index}" data-addBtn="remove-${movie.imdbID}" class="remove-from-wishlist-btn">
-                                <img class="remove-icon" data-addBtn="remove-${movie.imdbID}" src="./images/remove-icon.png" alt="A minus sign to remove this movie to your watchlist.">
+                            <button id="remove-btn-${index}" data-removeBtn="remove-${movie.imdbID}" class="remove-from-wishlist-btn">
+                                <img class="remove-icon" data-removeBtn="remove-${movie.imdbID}" src="./images/remove-icon.png" alt="A minus sign to remove this movie to your watchlist.">
                                 Remove
                             </button>
                         </li>
@@ -38,9 +38,21 @@ async function renderWatchlistMovies(arr){
         truncateLine()
 
     } else{
-        exploreWatchList.classList.remove('hidden') 
+        exploreWatchList.classList.remove('hidden')
     }
     
 }
+
+document.body.addEventListener('click', (e) => {
+    if(e.target.dataset.removebtn){
+        const indexToRemove = watchListLocalStorage.indexOf(e.target.dataset.removebtn.slice(7))
+        watchListLocalStorage.splice(indexToRemove, 1)
+
+        const updatedImdbIdList = JSON.stringify(watchListLocalStorage)
+        localStorage.setItem('watchlist', updatedImdbIdList)
+
+        renderWatchlistMovies(watchListLocalStorage)
+    }
+})
 
 renderWatchlistMovies(watchListLocalStorage)
