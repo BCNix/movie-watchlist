@@ -1,4 +1,4 @@
-const BASE_URL = 'http://www.omdbapi.com/'
+const BASE_URL = 'https://www.omdbapi.com/'
 const SEARCH_END_POINT = '?s='
 const IMDB_END_POINT = '?i='
 const API_KEY = '&apikey=e1b8f91d'
