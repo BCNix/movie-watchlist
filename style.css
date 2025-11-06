@@ -167,7 +167,7 @@ main .buffer{
 
 /* Movies Container */
 
-.movies-containter{
+.movies-container{
   padding-top: 24px;
   overflow: scroll;
   height: 95%;
@@ -176,8 +176,8 @@ main .buffer{
 
 .movie-item{
   display: flex;
-  justify-content: center;
-  align-items: self-start;
+  justify-content: start;
+  align-items: center;
   gap: 1rem;
   max-width: 470px;
   margin: 0 auto;
